@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: museum
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: museum
+  template:
+    metadata:
+      labels:
+        app: museum
+    spec:
+      containers:
+        - name: museum
+          image: { .Values.museum.image }
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: ente-secrets

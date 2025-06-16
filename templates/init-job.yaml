@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-minio
+spec:
+  template:
+    spec:
+      containers:
+        - name: init
+          image: minio/mc
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              mc alias set local http://minio:3200 {{ .Values.minio.accessKey }} {{ .Values.minio.secretKey }};
+              mc mb -p local/b2-eu-cen;
+              mc mb -p local/wasabi-eu-central-2-v3;
+              mc mb -p local/scw-eu-fr-v3;
+      restartPolicy: OnFailure

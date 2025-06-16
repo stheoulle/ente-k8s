@@ -1,0 +1,32 @@
+museum:
+  image: ghcr.io/ente-io/server
+  port: 8080
+  config:
+    encryptionKey: ""
+    hashKey: ""
+    jwtSecret: ""
+    db:
+      user: pguser
+      password: ""
+      name: ente_db
+    s3:
+      accessKey: ""
+      secretKey: ""
+
+web:
+  image: ghcr.io/ente-io/web
+  ports:
+    - 3000
+    - 3002
+
+postgres:
+  image: postgres:15
+  user: pguser
+  password: ""
+  database: ente_db
+
+minio:
+  image: minio/minio
+  accessKey: ""
+  secretKey: ""
+  port: 3200

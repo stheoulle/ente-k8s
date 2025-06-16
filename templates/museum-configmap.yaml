@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: museum-config
+data:
+  museum.yaml: |
+    key:
+      encryption: {{ .Values.museum.config.encryptionKey }}
+      hash: {{ .Values.museum.config.hashKey }}
+    jwt:
+      secret: {{ .Values.museum.config.jwtSecret }}
+    db:
+      host: postgres
+      port: 5432
+      name: ente_db
+      user: pguser
+      password: {{ .Values.museum.config.db.password }}
+    s3:
+      are_local_buckets: true
+      b2-eu-cen:
+        key: {{ .Values.minio.accessKey }}
+        secret: {{ .Values.minio.secretKey }}
+        endpoint: minio:3200
+        region: eu-central-2
+        bucket: b2-eu-cen
+      wasabi-eu-central-2-v3:
+        key: {{ .Values.minio.accessKey }}
+        secret: {{ .Values.minio.secretKey }}
+        endpoint: minio:3200
+        region: eu-central-2
+        bucket: wasabi-eu-central-2-v3
+        compliance: false
+      scw-eu-fr-v3:
+        key: {{ .Values.minio.accessKey }}
+        secret: {{ .Values.minio.secretKey }}
+        endpoint: minio:3200
+        region: eu-central-2
+        bucket: scw-eu-fr-v3
