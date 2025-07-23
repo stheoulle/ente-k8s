@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: museum
-          image: { .Values.museum.image }
+          image: {{ .Values.museum.image }}
           ports:
             - containerPort: 8080
           envFrom:

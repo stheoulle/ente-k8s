@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: { .Values.web.image }
+          image: {{ .Values.web.image }}
           ports:
             - containerPort: 3000
           envFrom:
