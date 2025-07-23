@@ -2,16 +2,16 @@ museum:
   image: ghcr.io/ente-io/server
   port: 8080
   config:
-    encryptionKey: ""
-    hashKey: ""
-    jwtSecret: ""
+    encryptionKey: "Iw3kXe_4bZE-ymhwD8broaIR4dQi-V3kULSdk_r43DU="
+    hashKey: "0aK_paEzZ1rtP-0-ETf-HiApM5PFkpYGMSbr8eDDyag="
+    jwtSecret: "8lJmZQNLssb83kbZefEr_uvxP8Cl3ubQ40SRtRnt9As="
     db:
       user: pguser
-      password: ""
+      password: "postgres@password123"
       name: ente_db
     s3:
-      accessKey: ""
-      secretKey: ""
+      accessKey: "hp1dPd67lI&u7k3RF9"
+      secretKey: "$f%G8#&56!s1Ix9QsJ"
 
 web:
   image: ghcr.io/ente-io/web
@@ -22,11 +22,11 @@ web:
 postgres:
   image: postgres:15
   user: pguser
-  password: ""
+  password: "Im2!AhbcVOO*i&454O"
   database: ente_db
 
 minio:
   image: minio/minio
-  accessKey: ""
-  secretKey: ""
+  accessKey: "6pfs9CZ!EHt!@cmD5*"
+  secretKey: "3Ae#EH589lR72^S20R"
   port: 3200
