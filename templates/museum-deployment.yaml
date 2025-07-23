@@ -14,9 +14,17 @@ spec:
     spec:
       containers:
         - name: museum
-          image: {{ .Values.museum.image }}
+          image: "{{ .Values.museum.image }}"
           ports:
             - containerPort: 8080
           envFrom:
             - secretRef:
                 name: ente-secrets
+          volumeMounts:
+            - name: museum-config-volume
+              mountPath: /etc/ente/museum.yaml
+              subPath: museum.yaml
+      volumes:
+        - name: museum-config-volume
+          configMap:
+            name: museum-config
