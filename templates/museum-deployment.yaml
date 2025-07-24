@@ -22,7 +22,7 @@ spec:
                 name: ente-secrets
           volumeMounts:
             - name: museum-config-volume
-              mountPath: /etc/ente/config/museum.yaml
+              mountPath: /etc/ente/museum.yaml
               subPath: museum.yaml
       volumes:
         - name: museum-config-volume
