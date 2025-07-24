@@ -14,9 +14,21 @@ spec:
     spec:
       containers:
         - name: minio
-          image: {{ .Values.minio.image }}
+          image: "{{ .Values.minio.image }}"
+          args:
+            - server
+            - /data
+            - "--address=:3200"
+            - "--console-address=:9001"
           ports:
             - containerPort: 3200
+            - containerPort: 9001
           envFrom:
             - secretRef:
                 name: ente-secrets
+          volumeMounts:
+            - name: minio-data
+              mountPath: /data
+      volumes:
+        - name: minio-data
+          emptyDir: {}
