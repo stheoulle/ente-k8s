@@ -15,6 +15,7 @@ spec:
       containers:
         - name: museum
           image: "{{ .Values.museum.image }}"
+          command: ["/bin/sh", "-c", "tail -f /dev/null"] # Override the command to keep the container running
           ports:
             - containerPort: 8080
           envFrom:
