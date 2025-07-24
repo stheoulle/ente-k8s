@@ -22,7 +22,7 @@ web:
 postgres:
   image: postgres:15
   user: pguser
-  password: "Im2!AhbcVOO*i&454O"
+  password: "postgres@password123"
   database: ente_db
 
 minio:
