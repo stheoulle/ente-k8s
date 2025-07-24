@@ -24,6 +24,13 @@ spec:
             - name: museum-config-volume
               mountPath: /etc/ente/museum.yaml
               subPath: museum.yaml
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - "/bin/sh"
+                  - "-c"
+                  - "echo \"$POSTGRES_SERVICE_HOST postgres\" >> /etc/hosts"
       volumes:
         - name: museum-config-volume
           configMap:
