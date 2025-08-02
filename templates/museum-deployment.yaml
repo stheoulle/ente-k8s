@@ -15,6 +15,7 @@ spec:
       containers:
         - name: museum
           image: "{{ .Values.museum.image }}"
+          command: ["./museum"]
           args:
             - "--config"
             - "/etc/ente/museum.yaml"
