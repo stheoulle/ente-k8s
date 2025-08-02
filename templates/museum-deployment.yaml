@@ -27,7 +27,6 @@ spec:
           volumeMounts:
             - name: museum-config-volume
               mountPath: /etc/ente
-              subPath: museum.yaml
       volumes:
         - name: museum-config-volume
           configMap:
