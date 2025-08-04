@@ -19,6 +19,9 @@ spec:
           args:
             - "--config"
             - "/etc/ente/museum.yaml"
+            - "sh"
+            - "-c"
+            - "sleep 99999"
           ports:
             - containerPort: 8080
           envFrom:
