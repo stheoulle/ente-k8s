@@ -25,9 +25,9 @@ spec:
             - secretRef:
                 name: ente-secrets
           volumeMounts:
-            - name: museum-config-volume
+            - name: museum-config
               mountPath: /etc/ente
       volumes:
-        - name: museum-config-volume
+        - name: museum-config
           configMap:
             name: museum-config
