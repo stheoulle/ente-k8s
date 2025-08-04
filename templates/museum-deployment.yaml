@@ -12,6 +12,10 @@ spec:
       labels:
         app: museum
     spec:
+      volumes:
+        - name: museum-config
+          configMap:
+            name: museum-config
       containers:
         - name: museum
           image: "{{ .Values.museum.image }}"
@@ -19,9 +23,6 @@ spec:
           args:
             - "--config"
             - "/etc/ente/museum.yaml"
-            - "sh"
-            - "-c"
-            - "sleep 99999"
           ports:
             - containerPort: 8080
           envFrom:
@@ -30,7 +31,13 @@ spec:
           volumeMounts:
             - name: museum-config
               mountPath: /etc/ente
-      volumes:
-        - name: museum-config
-          configMap:
-            name: museum-config
+      # Optional init container to verify the config file exists
+      initContainers:
+        - name: check-config
+          image: busybox
+          command: ["sh", "-c"]
+          args:
+            - "ls -l /etc/ente/museum.yaml; cat /etc/ente/museum.yaml"
+          volumeMounts:
+            - name: museum-config
+              mountPath: /etc/ente
